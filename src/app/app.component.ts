@@ -1,13 +1,25 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
+import { FormsModule } from '@angular/forms'; 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [FormsModule] 
 })
 export class AppComponent {
+  username: string = '';
+  password: string = '';
+  loginError: boolean = false;
   title = 'webapp';
+
+  onSubmit() {
+    // Simple hardcoded check for demonstration purposes
+    if (this.username === 'admin' && this.password === 'password') {
+      alert('Login successful!');
+      this.loginError = false;
+    } else {
+      this.loginError = true;
+    }
+  }
 }
